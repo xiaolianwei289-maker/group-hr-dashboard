@@ -1665,14 +1665,20 @@ function exportImage() {
   const btn = document.querySelector('.header-btn');
   if (btn) { btn.textContent = '生成中...'; btn.disabled = true; }
 
-  const panels = document.querySelectorAll('.tab-panel');
+  // 只展示3个主看板（在职/入职/离职），排除花名册详情、编制详情
+  const showPanels = ['panel-active','panel-join','panel-resign'];
   const wasHidden = [];
-  panels.forEach(p => {
-    if (p.style.display === 'none' || !p.classList.contains('active')) {
+  showPanels.forEach(id => {
+    const p = document.getElementById(id);
+    if (p && !p.classList.contains('active')) {
       wasHidden.push(p);
       p.style.display = 'block';
     }
   });
+
+  // 重新渲染图表确保canvas尺寸正确
+  if (typeof renderJoinCharts === 'function') renderJoinCharts();
+  if (typeof renderResignCharts === 'function') renderResignCharts();
 
   setTimeout(() => {
     html2canvas(target, { scale: 2, useCORS: true, backgroundColor: '#f5f7fa', logging: false }).then(canvas => {
@@ -1686,7 +1692,7 @@ function exportImage() {
       wasHidden.forEach(p => { p.style.display = ''; });
       if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
     });
-  }, 300);
+  }, 500);
 }
 
 /* ========== INIT ========== */
