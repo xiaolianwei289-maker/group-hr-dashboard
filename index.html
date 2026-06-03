@@ -1360,14 +1360,16 @@ function renderActiveCharts() {
         ctx.fillStyle = '#333';
         ctx.fillText('在职总人数', centerX, centerY);
         
-        // 下方分类标注
-        const radius = Math.min(width, height) / 2 * 0.65;
-        const angleOffset = -Math.PI / 2;
+        // 标注在各自扇形中心方向，动态计算角度
+        const radius = Math.min(width, height) / 2 * 0.6;
+        const startAngle = -Math.PI / 2;           // Chart.js pie从12点钟起
+        const oldFrac = oldCount / (oldCount + newCount);
+        const newFrac = newCount / (oldCount + newCount);
         
-        // 老员工标注（左侧）
-        const oldAngle = angleOffset - Math.PI * 0.25;
-        const oldX = centerX + Math.cos(oldAngle) * radius * 1.5;
-        const oldY = centerY + Math.sin(oldAngle) * radius * 1.1;
+        // 老员工扇形: 从startAngle到startAngle+oldFrac*2π，中点在此区间
+        const oldMidAngle = startAngle + oldFrac * Math.PI;
+        const oldX = centerX + Math.cos(oldMidAngle) * radius * 1.15;
+        const oldY = centerY + Math.sin(oldMidAngle) * radius * 1.05;
         
         ctx.font = 'bold 16px Microsoft YaHei';
         ctx.fillStyle = '#2c5ba8';
@@ -1376,10 +1378,10 @@ function renderActiveCharts() {
         ctx.fillStyle = '#333';
         ctx.fillText(oldCount + '人 (' + oldPct + '%)', oldX, oldY + 10);
         
-        // 新员工标注（右侧）
-        const newAngle = angleOffset + Math.PI * 0.25;
-        const newX = centerX + Math.cos(newAngle) * radius * 1.5;
-        const newY = centerY + Math.sin(newAngle) * radius * 1.1;
+        // 新员工扇形: 紧接老员工之后到startAngle+2π
+        const newMidAngle = startAngle + oldFrac * 2 * Math.PI + newFrac * Math.PI;
+        const newX = centerX + Math.cos(newMidAngle) * radius * 1.15;
+        const newY = centerY + Math.sin(newMidAngle) * radius * 1.05;
         
         ctx.font = 'bold 16px Microsoft YaHei';
         ctx.fillStyle = '#27ae60';
