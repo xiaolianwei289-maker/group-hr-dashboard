@@ -1226,7 +1226,7 @@ function renderActiveCharts() {
     }
   });
 
-  // === 图3: BU月度在职人数趋势（所有数据点标注）===
+  // === 图3: BU月度在职人数趋势（空间允许时显示数据标签）===
   destroyChart('activeMonthly');
   chartInstances['activeMonthly'] = new Chart(document.getElementById('chart-active-monthly'), {
     type: 'line',
@@ -1241,8 +1241,18 @@ function renderActiveCharts() {
         pointRadius: 5,
         pointBackgroundColor: MONTH_COLORS[i],
         fill: false,
-        datalabels: { anchor: 'bottom', align: 'top', font: { size: 8 }, formatter: v => v > 0 ? v : '', display: false }
+        datalabels: {
+          display: 'auto',
+          anchor: 'end',
+          align: 'top',
+          font: { size: 8, weight: 'bold' },
+          formatter: v => v,
+          offset: 2
+        }
       }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, layout: { padding: { top: 10 } },
     },
     options: {
       responsive: true, maintainAspectRatio: false, layout: { padding: { top: 10 } },
