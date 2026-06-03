@@ -1664,15 +1664,29 @@ function exportImage() {
   const target = document.querySelector('.page-wrapper');
   const btn = document.querySelector('.header-btn');
   if (btn) { btn.textContent = '生成中...'; btn.disabled = true; }
-  html2canvas(target, { scale: 2, useCORS: true, backgroundColor: '#f5f7fa', logging: false }).then(canvas => {
-    const a = document.createElement('a');
-    a.href = canvas.toDataURL('image/png');
-    a.download = '集团人力看板_v7.png';
-    a.click();
-    if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
-  }).catch(() => {
-    if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
+
+  const panels = document.querySelectorAll('.tab-panel');
+  const wasHidden = [];
+  panels.forEach(p => {
+    if (p.style.display === 'none' || !p.classList.contains('active')) {
+      wasHidden.push(p);
+      p.style.display = 'block';
+    }
   });
+
+  setTimeout(() => {
+    html2canvas(target, { scale: 2, useCORS: true, backgroundColor: '#f5f7fa', logging: false }).then(canvas => {
+      wasHidden.forEach(p => { p.style.display = ''; });
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = '集团人力看板_v7.png';
+      a.click();
+      if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
+    }).catch(() => {
+      wasHidden.forEach(p => { p.style.display = ''; });
+      if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
+    });
+  }, 300);
 }
 
 /* ========== INIT ========== */
