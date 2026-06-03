@@ -177,7 +177,7 @@
     <div id="header-top">
       <h1 id="header-title">📊 集团人力数据分析看板</h1>
     </div>
-    <div id="header-subtitle" style="font-size:10px;color:rgba(255,255,255,0.7);margin-top:2px">数据刷新时间：2026-05-31；累计数据时间范围：2026年1月1日至今</div>
+    <div id="header-subtitle" style="font-size:10px;color:rgba(255,255,255,0.7);margin-top:2px">数据刷新时间：2026-05-31；累计数据时间范围：2026/1/1-2026/5/31</div>
   </div>
 </div>
 
@@ -1671,7 +1671,7 @@ function exportImage() {
 window.onload = function() {
   renderAISummary();
   const now = new Date();
-  document.getElementById('header-subtitle').textContent = '数据刷新时间：' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '；累计数据时间范围：2026年1月1日至今';
+  document.getElementById('header-subtitle').textContent = '数据刷新时间：' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '；累计数据时间范围：2026/1/1-2026/5/31';
   renderOverview();
   buildBUCheckboxes();
   renderActiveCharts();
