@@ -1701,7 +1701,7 @@ function exportImage() {
   if (typeof renderResignCharts === 'function') renderResignCharts();
 
   setTimeout(() => {
-    html2canvas(target, { scale: 2, useCORS: true, backgroundColor: '#f5f7fa', logging: false }).then(canvas => {
+    html2canvas(target, { scale: 3, useCORS: true, backgroundColor: '#f5f7fa', logging: false }).then(canvas => {
       // 恢复状态
       wasHidden.forEach(p => { p.style.display = ''; });
       stickyBackups.forEach(b => { b.el.style.position = b.position; b.el.style.top = b.top; });
