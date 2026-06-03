@@ -176,6 +176,9 @@
   <div id="header">
     <div id="header-top">
       <h1 id="header-title">📊 集团人力数据分析看板</h1>
+      <div id="header-btns">
+        <button class="header-btn" onclick="exportImage()" title="下载为PNG图片">📥 下载图片</button>
+      </div>
     </div>
     <div id="header-subtitle" style="font-size:10px;color:rgba(255,255,255,0.7);margin-top:2px">数据刷新时间：2026-05-31；累计数据时间范围：2026/1/1-2026/5/31</div>
   </div>
@@ -1658,12 +1661,17 @@ function downloadHTML() {
 }
 
 function exportImage() {
-  const target = document.getElementById('main');
-  html2canvas(target, { scale: 1.5, useCORS: true, backgroundColor: '#f5f7fa' }).then(canvas => {
+  const target = document.querySelector('.page-wrapper');
+  const btn = document.querySelector('.header-btn');
+  if (btn) { btn.textContent = '生成中...'; btn.disabled = true; }
+  html2canvas(target, { scale: 2, useCORS: true, backgroundColor: '#f5f7fa', logging: false }).then(canvas => {
     const a = document.createElement('a');
     a.href = canvas.toDataURL('image/png');
     a.download = '集团人力看板_v7.png';
     a.click();
+    if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
+  }).catch(() => {
+    if (btn) { btn.textContent = '📥 下载图片'; btn.disabled = false; }
   });
 }
 
