@@ -392,6 +392,7 @@ Chart.register(ChartDataLabels);
 
 const MONTHS = ['2026-01','2026-02','2026-03','2026-04','2026-05'];
 const MONTH_LABELS = ['1月','2月','3月','4月','5月'];
+const MONTH_TREND_LABELS = ['1月初','2月初','3月初','4月初','5月初','5月底'];
 
 /* ========== DATA ========== */
 const D = {
@@ -432,7 +433,7 @@ const D = {
       "netGrowth": 103,
       "activeResign": 130,
       "passiveResign": 82,
-      "active_monthly": [1190, 1239, 1212, 1263, 1293],
+      "active_monthly": [1190, 1219, 1198, 1250, 1276, 1293],
       "jan_active": 1190
     },
     "FBU": {
@@ -459,7 +460,7 @@ const D = {
       "netGrowth": 178,
       "activeResign": 227,
       "passiveResign": 107,
-      "active_monthly": [2165, 2195, 2214, 2243, 2343],
+      "active_monthly": [2165, 2174, 2200, 2226, 2285, 2343],
       "jan_active": 2165
     },
     "ABU": {
@@ -486,7 +487,7 @@ const D = {
       "netGrowth": 76,
       "activeResign": 33,
       "passiveResign": 51,
-      "active_monthly": [210, 223, 227, 245, 286],
+      "active_monthly": [210, 219, 222, 232, 265, 286],
       "jan_active": 210
     },
     "PBU": {
@@ -513,7 +514,7 @@ const D = {
       "netGrowth": -21,
       "activeResign": 49,
       "passiveResign": 27,
-      "active_monthly": [454, 441, 431, 438, 433],
+      "active_monthly": [454, 436, 422, 428, 426, 433],
       "jan_active": 454
     },
     "GEU": {
@@ -540,7 +541,7 @@ const D = {
       "netGrowth": 95,
       "activeResign": 108,
       "passiveResign": 63,
-      "active_monthly": [606, 646, 645, 674, 701],
+      "active_monthly": [606, 637, 633, 662, 691, 701],
       "jan_active": 606
     },
     "GUS": {
@@ -567,14 +568,14 @@ const D = {
       "netGrowth": 279,
       "activeResign": 208,
       "passiveResign": 107,
-      "active_monthly": [1148, 1210, 1291, 1360, 1427],
+      "active_monthly": [1148, 1195, 1271, 1334, 1402, 1427],
       "jan_active": 1148
     },
     "HQU_HRAS": {
       "active": 399,
-      "staff": 508,
-      "filled": 334,
-      "fillRate": 65.7,
+      "staff": 533,
+      "filled": 358,
+      "fillRate": 67.2,
       "joined": 107,
       "joinedMay": 25,
       "joinedApr": 20,
@@ -594,7 +595,7 @@ const D = {
       "netGrowth": 33,
       "activeResign": 42,
       "passiveResign": 30,
-      "active_monthly": [366, 382, 380, 400, 399],
+      "active_monthly": [366, 381, 374, 394, 392, 399],
       "jan_active": 366
     },
     "HQU_FES": {
@@ -621,7 +622,7 @@ const D = {
       "netGrowth": 44,
       "activeResign": 41,
       "passiveResign": 11,
-      "active_monthly": [501, 508, 504, 516, 545],
+      "active_monthly": [501, 506, 504, 514, 531, 545],
       "jan_active": 501
     },
     "HQU_技术部": {
@@ -648,7 +649,7 @@ const D = {
       "netGrowth": 3,
       "activeResign": 2,
       "passiveResign": 2,
-      "active_monthly": [90, 89, 89, 93, 93],
+      "active_monthly": [90, 89, 89, 92, 94, 93],
       "jan_active": 90
     },
     "HQU_其他": {
@@ -675,14 +676,14 @@ const D = {
       "netGrowth": 1,
       "activeResign": 0,
       "passiveResign": 0,
-      "active_monthly": [15, 15, 15, 15, 16],
+      "active_monthly": [15, 15, 15, 15, 15, 16],
       "jan_active": 15
     }
   },
   "total": {
     "active": 7536,
-    "staff": 9026,
-    "filled": 6341,
+    "staff": 9051,
+    "filled": 6365,
     "fillRate": 70.3,
     "joined": 2154,
     "joinedMay": 497,
@@ -698,18 +699,18 @@ const D = {
     "janActive": 6838
   },
   "monthly_active": {
-    "LBU": [1190, 1239, 1212, 1263, 1293],
-    "FBU": [2165, 2195, 2214, 2243, 2343],
-    "ABU": [210, 223, 227, 245, 286],
-    "PBU": [454, 441, 431, 438, 433],
-    "GEU": [606, 646, 645, 674, 701],
-    "GUS": [1148, 1210, 1291, 1360, 1427],
-    "HQU_HRAS": [366, 382, 380, 400, 399],
-    "HQU_FES": [501, 508, 504, 516, 545],
-    "HQU_技术部": [90, 89, 89, 93, 93],
-    "HQU_其他": [15, 15, 15, 15, 16]
+    "LBU": [1190, 1219, 1198, 1250, 1276, 1293],
+    "FBU": [2165, 2174, 2200, 2226, 2285, 2343],
+    "ABU": [210, 219, 222, 232, 265, 286],
+    "PBU": [454, 436, 422, 428, 426, 433],
+    "GEU": [606, 637, 633, 662, 691, 701],
+    "GUS": [1148, 1195, 1271, 1334, 1402, 1427],
+    "HQU_HRAS": [366, 381, 374, 394, 392, 399],
+    "HQU_FES": [501, 506, 504, 514, 531, 545],
+    "HQU_技术部": [90, 89, 89, 92, 94, 93],
+    "HQU_其他": [15, 15, 15, 15, 15, 16]
   },
-  "monthly_active_total": [6745, 6948, 7008, 7247, 7536],
+  "monthly_active_total": [6745, 6871, 6928, 7147, 7377, 7536],
   "monthly_join": {
     "LBU": {
       "2026-01": 75,
@@ -872,9 +873,9 @@ const D = {
     "高层干部": {
       "name": "高层干部",
       "active": 78,
-      "staff": 109,
-      "filled": 100,
-      "fillRate": 91.7,
+      "staff": 110,
+      "filled": 101,
+      "fillRate": 91.8,
       "resigned": 3,
       "activeResign": 3,
       "passiveResign": 0
@@ -892,8 +893,8 @@ const D = {
     "基层干部": {
       "name": "基层干部",
       "active": 630,
-      "staff": 1052,
-      "filled": 687,
+      "staff": 1053,
+      "filled": 688,
       "fillRate": 65.3,
       "resigned": 57,
       "activeResign": 41,
@@ -902,9 +903,9 @@ const D = {
     "P3": {
       "name": "P3",
       "active": 190,
-      "staff": 313,
-      "filled": 214,
-      "fillRate": 68.4,
+      "staff": 315,
+      "filled": 216,
+      "fillRate": 68.6,
       "resigned": 15,
       "activeResign": 10,
       "passiveResign": 5
@@ -912,9 +913,9 @@ const D = {
     "P2": {
       "name": "P2",
       "active": 2100,
-      "staff": 3246,
-      "filled": 2389,
-      "fillRate": 73.6,
+      "staff": 3258,
+      "filled": 2400,
+      "fillRate": 73.7,
       "resigned": 251,
       "activeResign": 157,
       "passiveResign": 94
@@ -922,9 +923,9 @@ const D = {
     "P1": {
       "name": "P1",
       "active": 4321,
-      "staff": 4023,
-      "filled": 2709,
-      "fillRate": 67.3,
+      "staff": 4032,
+      "filled": 2718,
+      "fillRate": 67.4,
       "resigned": 985,
       "activeResign": 626,
       "passiveResign": 359
@@ -1231,7 +1232,7 @@ function renderActiveCharts() {
   chartInstances['activeMonthly'] = new Chart(document.getElementById('chart-active-monthly'), {
     type: 'line',
     data: {
-      labels: MONTH_LABELS,
+      labels: MONTH_TREND_LABELS,
       datasets: BU_ORDER.map((bu, i) => ({
         label: bu,
         data: D.monthly_active[bu],
