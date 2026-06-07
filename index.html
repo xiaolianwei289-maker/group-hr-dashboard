@@ -1210,16 +1210,12 @@ function renderActiveCharts() {
     }
   });
 
-  // === 图2: 各层级编制与在职对比（满编率折线-高辨识度，数据点上方标注）===
+  // === 图2: 各层级编制与在职对比（从D.level_data动态读取）===
   destroyChart('levelFill');
-  const levelData = [
-    { name: '高层干部', active: 81, staff: 109, filled: 99, fillRate: 91 },
-    { name: '中层干部', active: 217, staff: 283, filled: 236, fillRate: 83 },
-    { name: '基层干部', active: 633, staff: 1052, filled: 683, fillRate: 65 },
-    { name: 'P3', active: 193, staff: 313, filled: 213, fillRate: 68 },
-    { name: 'P2', active: 2125, staff: 3246, filled: 2360, fillRate: 73 },
-    { name: 'P1', active: 4396, staff: 4152, filled: 2797, fillRate: 67 },
-  ];
+  const levelData = LEVEL_ORDER.filter(l => D.level_data[l] && D.level_data[l].active > 0).map(l => {
+    const d = D.level_data[l];
+    return { name: d.name, active: d.active, staff: d.staff, filled: d.filled, fillRate: d.fillRate };
+  });
   chartInstances['levelFill'] = new Chart(document.getElementById('chart-level-fill'), {
     data: {
       labels: levelData.map(l => l.name),
